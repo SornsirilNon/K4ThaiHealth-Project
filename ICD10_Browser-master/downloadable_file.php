@@ -3,23 +3,21 @@
 
 <head>
 
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Tables</title>
+  <title>SB Admin 2 - Blank</title>
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -55,27 +53,26 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>Browse</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <!--div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <!--h6 class="collapse-header">Login Screens:</h6>
+            <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a -->
-            
+            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <a class="collapse-item active" href="blank.html">Browse</a>
           </div>
-        </div>
+        </div-->
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true" aria-controls="collapseCharts">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span>
-        </a>
+          <span>Charts</span></a>
         <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="Chart_Charpter_Part.php">ICD-10 Chapter Part</a>
@@ -87,14 +84,13 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTables" aria-expanded="true" aria-controls="collapseTables">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span>
-        </a>
+          <span>Tables</span></a>
         <div id="collapseTables" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="tablesChapter.php">ICD-10 Chapter Part</a>
+            <a class="collapse-item" href="tablesChapter.php">ICD-10 Chapter Part</a>
             <a class="collapse-item" href="tablesBlock.php">ICD-10 Block Part</a>
             <a class="collapse-item" href="tablesCategory.php">ICD-10 Category Part</a>
             <a class="collapse-item" href="tablesSubCategory.php">ICD-10 Sub-Category Part</a>
@@ -120,98 +116,21 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"></nav>
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-        </nav>
-        <!-- End of Topbar -->
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Chapter</th>
-                      <th>Block</th>
-                      <th>Sub-Block Leve1</th>
-                      <th>Sub-Block Leve2</th>
-                      <th>Block Name</th>
-                    </tr>
-                  </thead>
-                  
-                  <tbody>                 
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "icd_10_tm_test";
-
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    } 
-                    $chapter_sql = "select distinct block_v3.preferred_block_id as id, chapter_v3_blockrange.chapter_name as Chapter, 
-                    block_v3.block_code as Block, 
-                    null as Sub_Block_LV1,
-                    null as Sub_Block_LV2,
-                    block_v3.preferred_block_description as Block_Name 
-                    from block_v3
-                    right join chapter_v3_blockrange on block_v3.parent = chapter_v3_blockrange.chapter_code
-                    union 
-                    select  block_first_child.preferred_block_id as id, chapter_v3_blockrange.chapter_name as Chapter,
-                    null as Block,
-                    block_first_child.block_code as Sub_Block_LV1,
-                    null as Sub_Block_LV2,
-                    block_first_child.preferred_block_description as Block_Name 
-                    from block_first_child
-                    left join block_v3 on block_first_child.preferred_block_parent = block_v3.block_code
-                    left join chapter_v3_blockrange on block_v3.parent = chapter_v3_blockrange.chapter_code
-                    union 
-                    select  block_second_child.preferred_block_id as id, chapter_v3_blockrange.chapter_name as Chapter,
-                    null as Block,
-                    null as Sub_Block_LV1,
-                    block_second_child.block_code as Sub_Block_LV2,
-                    block_second_child.preferred_block_description as Block_Name 
-                    from block_second_child
-                    left join block_first_child on block_second_child.preferred_block_parent = block_first_child.block_code
-                    left join block_v3 on block_first_child.preferred_block_parent = block_v3.block_code
-                    left join chapter_v3_blockrange on block_v3.parent = chapter_v3_blockrange.chapter_code
-                    order by id";
-                    $result = $conn->query($chapter_sql);
-                    while($row = $result->fetch_assoc()){
-                      echo'<tr>';
-                      echo '<td>'.$row["Chapter"].'</td>';
-                      echo '<td>'.$row["Block"].'</td>';
-                      echo '<td>'.$row["Sub_Block_LV1"].'</td>';
-                      echo '<td>'.$row["Sub_Block_LV2"].'</td>';
-                      echo '<td>'.$row["Block_Name"].'</td>';
-                      echo'</tr>';
-                    }
-                    $conn->close();
-                  ?>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
+        <div class="text-left">
+                <a class="lead text-gray-800 mb-5">
+                <div style="padding: 12px 20px;float: left;margin-left: 0px;">Download ICD-10 Database file here:</div></a>
+                
         </div>
-        <!-- /.container-fluid -->
-
+        <div style = "padding: 12px 20px;float: left;margin-left: 0px;"></div>
+        <a href download = "category_v3.sql"><div style = "float: left;margin-left: 20px;">
+        ICD-10 Category</a></div>
+       
       </div>
       <!-- End of Main Content -->
 
@@ -253,7 +172,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -264,13 +183,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

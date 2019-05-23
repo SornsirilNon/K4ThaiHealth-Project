@@ -74,10 +74,10 @@
         </a>
         <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="charts.html">ICD-10 Chapter Part</a>
-            <a class="collapse-item" href="charts.html">ICD-10 Block Part</a>
-            <a class="collapse-item" href="charts.html">ICD-10 Category Part</a>
-            <a class="collapse-item" href="charts.html">ICD-10 Sub-Category Part</a>
+            <a class="collapse-item" href="Chart_Charpter_Part.php">ICD-10 Chapter Part</a>
+            <a class="collapse-item" href="Chart_Block_Part.php">ICD-10 Block Part</a>
+            <a class="collapse-item" href="Chart_Category_Part.php">ICD-10 Category Part</a>
+            <a class="collapse-item" href="Chart_Sub_Category_Part.php">ICD-10 Sub-Category Part</a>
           </div>
         </div>
       </li>
