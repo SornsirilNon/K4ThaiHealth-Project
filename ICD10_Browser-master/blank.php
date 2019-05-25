@@ -62,7 +62,7 @@
           <span>Charts</span></a>
         <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="Chart_Charpter_Part.php">ICD-10 Chapter Part</a>
+            <a class="collapse-item" href="Chart_Chapter_Part.php">ICD-10 Chapter Part</a>
             <a class="collapse-item" href="Chart_Block_Part.php">ICD-10 Block Part</a>
             <a class="collapse-item" href="Chart_Category_Part.php">ICD-10 Category Part</a>
             <a class="collapse-item" href="Chart_Sub_Category_Part.php">ICD-10 Sub-Category Part</a>
@@ -109,46 +109,63 @@
           <ul class="navbar-nav ml-auto">
 
         <!-- Begin Page Content -->
-            <div class="text-center">
-                <a class="lead text-gray-800 mb-5">ICD-10 and ICD-10-TM Automated Document Structure</a><br>
-                <a class="lead text-gray-800 mb-5">Extraction and Verification System</a>
-            </div>   
-            
-            <div class="d-flex justify-content-center">
-              <!-- Sidebar Toggle (Topbar) -->
-              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                <i class="fa fa-bars"></i>
-              </button>
-              <!-- Topbar Search -->
-              <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action='' method='post'>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>Webslesson Tutorial</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+            <br />
+            <h2 align="center">ICD-10 Data Extraction and Verification System</h2><br />
+            <div class="form-group">
                 <div class="input-group">
-                    
-                  <input type="text" class="form-control bg-white border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name='label' value=''>
-                  
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                      <i class="fas fa-search fa-sm"></i>
-                    </button>
-                  </div>
+                <span class="input-group-addon">Search</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Search by ICD-10 Details" class="form-control" />
                 </div>
-              </form>  
-              <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-              <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>	
-              <script type="text/javascript">
-              $(function() {
-                
-                //autocomplete
-                $(".auto").autocomplete({
-                  source: "C:/xampp/htdocs/Web_project/ICD10_Browser-master/web_Autocomplete_search.php",
-                  minLength: 1
-                });				
-              });
-    
-    </script>           
+            </div>
+            <br />
+            <div id="result"></div>
+            </div>
+        </body>
+    </html>
+
+
+    <script>
+    $(document).ready(function(){
+
+    load_data();
+
+    function load_data(query)
+    {
+    $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{query:query},
+    minLength: 3,
+    success:function(data)
+    {
+        $('#result').html(data);
+    }
+    });
+    }
+    $('#search_text').keyup(function(){
+    var search = $(this).val();
+    if(search != '')
+    {
+    load_data(search);
+    }
+    else
+    {
+    load_data();
+    }
+    });
+    });
+    </script>
         </div>
-        <!-- /.container-fluid -->
-       
-      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
