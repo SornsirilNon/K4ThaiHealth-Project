@@ -23,7 +23,8 @@ else
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
- $output .= '
+ //$output .= '
+ ?>
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
@@ -33,24 +34,20 @@ if(mysqli_num_rows($result) > 0)
      <th>Label Type</th>
      <th>Sub-Category Description</th>
     </tr>
- ';
+    <?php }
+ //';
  while($row = mysqli_fetch_array($result))
  {
-  $output .= '
-   <tr>
-    <td>'.$row["sub_category_code"].'</td>
-    <td>'.$row["parent"].'</td>
-    <td>'.$row["preferred_sub_category_id"].'</td>
-    <td>'.$row["label_type"].'</td>
-    <td>'.$row["preferred_sub_category_description"].'</td>
+    $cat
+    //$output .= '
+?>
+    <tr>
+    <td><a href = "result.php?value1=<?php echo $row["sub_category_code"];?>&value2=<?php echo $row["parent"];?>&value3=<?php echo $row["preferred_sub_category_id"];?>&value4=<?php echo $row["label_type"];?>&value5=<?php echo $row["preferred_sub_category_description"];?>"><?php echo $row["sub_category_code"];?></td>
+    <td><a href = "result.php?value2=<?php echo $row["parent"];?>&value1=<?php echo $row["sub_category_code"];?>&value3=<?php echo $row["preferred_sub_category_id"];?>&value4=<?php echo $row["label_type"];?>&value5=<?php echo $row["preferred_sub_category_description"];?>"><?php echo $row["parent"];?></td>
+    <td><a href = "result.php?value3=<?php echo $row["preferred_sub_category_id"];?>&value1=<?php echo $row["sub_category_code"];?>&value2=<?php echo $row["parent"];?>&value4=<?php echo $row["label_type"];?>&value5=<?php echo $row["preferred_sub_category_description"];?>"><?php echo $row["preferred_sub_category_id"];?></td>
+    <td><a href = "result.php?value4=<?php echo $row["label_type"];?>value1=<?php echo $row["sub_category_code"];?>&value2=<?php echo $row["parent"];?>&value3=<?php echo $row["preferred_sub_category_id"];?>&value5=<?php echo $row["preferred_sub_category_description"];?>"><?php echo $row["label_type"];?></td>
+    <td><a href = "result.php?value5=<?php echo $row["preferred_sub_category_description"];?>&value1=<?php echo $row["sub_category_code"];?>&value2=<?php echo $row["parent"];?>&value3=<?php echo $row["preferred_sub_category_id"];?>&value4=<?php echo $row["label_type"];?>"><?php echo $row["preferred_sub_category_description"];?></a></td>
    </tr>
-  ';
- }
- echo $output;
-}
-else
-{
- echo 'Data Not Found';
-}
-
+ <?php }
+ //echo $output;
 ?>

@@ -189,7 +189,40 @@
                     </style>
                 
                 <body>
-                    <div id = "textarea_ICD10"></div>
+                    <div id = "textarea_ICD10">
+                      <?php
+                        if(isset($_GET['value1'])){
+                          $var1 = $_GET['value1'];
+                           
+                        }
+                        echo $var1;
+                        echo "<br>";
+                        if(isset($_GET['value2'])){
+                          $var2 = $_GET['value2'];
+                           
+                        }
+                        echo $var2;
+                        echo "<br>";
+                        if(isset($_GET['value3'])){
+                          $var3 = $_GET['value3'];
+                           
+                        }
+                        echo $var3;
+                        echo "<br>";
+                        if(isset($_GET['value4'])){
+                          $var4 = $_GET['value4'];
+                           
+                        }
+                        echo $var4;
+                        echo "<br>";
+                        if(isset($_GET['value5'])){
+                          $var5 = $_GET['value5'];
+                           
+                        }
+                        echo $var5;
+                      ?>
+                    </div>
+                    
                     
                     <div id = "textarea_MeSH"></div>
 

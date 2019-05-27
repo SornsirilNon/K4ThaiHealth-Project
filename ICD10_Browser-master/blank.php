@@ -135,35 +135,36 @@
 
 
     <script>
-    $(document).ready(function(){
+        $(document).ready(function(){
 
-    load_data();
+            //load_data();
 
-    function load_data(query)
-    {
-    $.ajax({
-    url:"fetch.php",
-    method:"POST",
-    data:{query:query},
-    minLength: 3,
-    success:function(data)
-    {
-        $('#result').html(data);
-    }
-    });
-    }
-    $('#search_text').keyup(function(){
-    var search = $(this).val();
-    if(search != '')
-    {
-    load_data(search);
-    }
-    else
-    {
-    load_data();
-    }
-    });
-    });
+            function load_data(query)
+        {
+
+        $.ajax({
+            url:"fetch.php",
+            method:"POST",
+            data:{query:query},
+            minLength: 3,
+            success:function(data)
+        {
+            $('#result').html(data);
+        }
+        });
+        }
+        $('#search_text').keyup(function(){
+        var search = $(this).val();
+        if(search != '')
+        {
+            load_data(search);
+        }
+        else
+        {
+            //load_data();
+        }
+        });
+        });
     </script>
         </div>
       <!-- End of Main Content -->
@@ -198,11 +199,6 @@
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
