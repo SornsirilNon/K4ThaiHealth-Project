@@ -84,6 +84,13 @@
           </div>
         </div>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="downloadable_file.php" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Download</span>
+        </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -195,31 +202,31 @@
                           $var1 = $_GET['value1'];
                            
                         }
-                        echo $var1;
+                        echo "<b>Sub-category Code: </b>".$var1;
                         echo "<br>";
                         if(isset($_GET['value2'])){
                           $var2 = $_GET['value2'];
                            
                         }
-                        echo $var2;
+                        echo "<b>Category Code: </b>".$var2;
                         echo "<br>";
                         if(isset($_GET['value3'])){
                           $var3 = $_GET['value3'];
                            
                         }
-                        echo $var3;
+                        echo "<b>Sub-category ID: </b>".$var3;
                         echo "<br>";
                         if(isset($_GET['value4'])){
                           $var4 = $_GET['value4'];
                            
                         }
-                        echo $var4;
+                        echo "<b>Label Type: </b>".$var4;
                         echo "<br>";
                         if(isset($_GET['value5'])){
                           $var5 = $_GET['value5'];
                            
                         }
-                        echo $var5;
+                        echo "<b>Sub-category Description: </b>".$var5;
                       ?>
                     </div>
                     

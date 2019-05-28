@@ -53,7 +53,7 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>Browse</span>
         </a>
-      </li>
+      </li> 
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -83,6 +83,14 @@
             <a class="collapse-item" href="tablesSubCategory.php">ICD-10 Sub-Category Part</a>
           </div>
         </div>
+      </li>
+
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="downloadable_file.php" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Download</span>
+        </a>
       </li>
 
       <!-- Divider -->
@@ -146,7 +154,7 @@
             url:"fetch.php",
             method:"POST",
             data:{query:query},
-            minLength: 3,
+            //minLength: 3,
             success:function(data)
         {
             $('#result').html(data);
