@@ -11,13 +11,13 @@ if(isset($_POST["query"]))
   OR parent LIKE '%".$search."%' 
   OR preferred_sub_category_id LIKE '%".$search."%' 
   OR label_type LIKE '%".$search."%' 
-  OR preferred_sub_category_description LIKE '%".$search."%'
+  OR preferred_sub_category_description LIKE '%".$search."%' LIMIT 20
  ";
 }
 else
 {
  $query = "
-  SELECT * FROM icd_10_tm_test.sub_category_v3 ORDER BY sub_category_code
+  SELECT * FROM icd_10_tm_test.sub_category_v3 ORDER BY sub_category_code LIMIT 20
  ";
 }
 $result = mysqli_query($connect, $query);
